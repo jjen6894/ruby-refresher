@@ -149,13 +149,21 @@ end
 # pairing up elements. e.g. ['a', 'b', 'c', 'd'] becomes
 # {'a' => 'b', 'c' => 'd'}
 def convert_array_to_a_hash(array)
+  h = Hash[*array]
+  h
 end
-
 # get all the letters used in an array of words and return
 # it as a array of letters, in alphabetical order
 # . e.g. the array ['cat', 'dog', 'fish'] becomes
 # ['a', 'c', 'd', 'f', 'g', 'h', 'i', 'o', 's', 't']
 def get_all_letters_in_array_of_words(array)
+  output = []
+  array.map do |i|
+    output.push(i.chars)
+  end
+  output.flatten.sort
+
+
 end
 
 # swap the keys and values in a hash. e.g.
