@@ -185,26 +185,40 @@ end
 # take out all the capital letters from a string
 # so 'Hello JohnDoe' becomes 'ello ohnoe'
 def remove_capital_letters_from_string(string)
+  output = []
+  a = string.split("")
+  a.map do |i|
+    if i != i.upcase || i == " "
+      output.push(i)
+    end
+  end
+  output.flatten.join("")
 end
 
 # round up a float up and convert it to an Integer,
 # so 3.214 becomes 4
 def round_up_number(float)
+  float.ceil
 end
 
 # round down a float up and convert it to an Integer,
 # so 9.52 becomes 9
 def round_down_number(float)
+  float.to_i
 end
 
 # take a date and format it like dd/mm/yyyy, so Halloween 2013
 # becomes 31/10/2013
 def format_date_nicely(date)
+  date.strftime('%d/%m/%Y')
+
 end
 
 # get the domain name *without* the .com part, from an email address
 # so alex@makersacademy.com becomes makersacademy
 def get_domain_name_from_email_address(email)
+  email.split("@").last.split(".").first
+
 end
 
 # capitalize the first letter in each word of a string,
@@ -213,30 +227,53 @@ end
 # 'the lion the witch and the wardrobe' becomes
 # 'The Lion the Witch and the Wardrobe'
 def titleize_a_string(string)
+  a = string.split(" ")
+  a.each do |i|
+    i.capitalize!
+    if i == "And"
+      i.downcase!
+    elsif i == "A"
+      i.downcase!
+    elsif i == "The"
+      i.downcase!
+    end
+  end
+  a[0].capitalize!
+  a.join(" ")
 end
 
 # return true if a string contains any special characters
 # where 'special character' means anything apart from the letters
 # a-z (uppercase and lower) or numbers
 def check_a_string_for_special_characters(string)
+
 end
 
 # get the upper limit of a range. e.g. for the range 1..20, you
 # should return 20
 def get_upper_limit_of(range)
+range.end
+
 end
 
 # should return true for a 3 dot range like 1...20, false for a
 # normal 2 dot range
 def is_a_3_dot_range?(range)
+  if range ==(1...20)
+     true
+  else
+    false
+  end
 end
 
 # get the square root of a number
 def square_root_of(number)
+  Math.sqrt(number)
 end
 
 # count the number of words in a file
 def word_count_a_file(file_path)
+  File.read(file_path).split(" ").count
 end
 
 # --- tougher ones ---
@@ -245,6 +282,7 @@ end
 # called call_method_from_string('foobar')
 # the method foobar should be invoked
 def call_method_from_string(str_method)
+  
 end
 
 # return true if the date is a uk bank holiday for 2014
